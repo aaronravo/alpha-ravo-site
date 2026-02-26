@@ -11,29 +11,39 @@
 <meta http-equiv="Expires" content="0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Antonio:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
     <a href="#" class="logo-link" aria-label="Alpha Ravo home">
-      <img src="assets/alpha-ravo-logo.png" alt="Alpha Ravo" class="logo">
+      <span class="logo-wordmark">ALPHA RAVO</span>
     </a>
     <nav class="nav">
-      <a href="https://www.instagram.com/alpharavo1/" target="_blank" rel="noopener noreferrer" class="nav-ig" aria-label="Instagram">Instagram</a>
+      <a
+        href="https://www.instagram.com/alpharavo1/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-ig"
+        aria-label="Instagram @alpharavo1"
+      >
+        <svg class="nav-ig-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+          <circle cx="12" cy="12" r="4.5"></circle>
+          <circle cx="17.2" cy="6.8" r="0.9"></circle>
+        </svg>
+        <span class="visually-hidden">Instagram</span>
+      </a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <img src="assets/alpha-ravo-logo.png" alt="Alpha Ravo" class="hero-logo">
-      <h1 class="hero-headline">Recode your mind. Realign your life.</h1>
-      <div class="hero-taglines">
-        <p class="hero-tagline">A transformative journey to say goodbye to the old you.</p>
-        <p class="hero-tagline hero-tagline-last">On the edge of something Powerful.</p>
-      </div>
+      <h1 class="hero-wordmark">
+        <span class="hero-wordmark-primary">Alpha Ravo</span>
+        <span class="hero-wordmark-tagline">MASCULINE PROWESS</span>
+      </h1>
     </section>
-
     <section class="founder-photo section">
       <img src="assets/aaron-ravo.png" alt="" class="founder-img">
       <div class="founder-bio">
@@ -43,14 +53,22 @@
         <p class="founder-cred">Founder-CEO, AI Company → Biohacker</p>
         <p class="founder-text">Built in competition, forged in discipline. He didn't enter business as an employee—he entered as a builder. Founded and scaled multiple companies; most recently President of an AI company, three years deep in infrastructure and applied integration. Years of controlled experimentation in recovery, hormones, nutrition, strength, and cognitive performance. He treats physiology and mindset like an operating system—and runs nightly directive resets to design trajectory instead of drifting through it.</p>
         <p class="founder-tagline">Doesn't talk theory. Builds systems.</p>
+      </div>
+    </section>
 
       <section class="book-coming section" aria-label="Book coming soon">
         <h2 class="section-title">Book coming soon</h2>
-        <p class="section-text">A book from Alpha Ravo—recode your mind, realign your life. Details and release date to follow.</p>
+        <div class="book-layout">
+          <div class="book-graphic" aria-hidden="true">
+            <div class="book-cover">
+              <span class="book-title">Coming soon</span>
+            </div>
+          </div>
+          <p class="section-text">A book from Alpha Ravo—recode your mind, realign your life. Details and release date to follow.</p>
+        </div>
       </section>
-
       <section class="testimonials section" aria-label="Testimonials">
-        <h2 class="testimonials-heading">What people are saying</h2>
+        <h2 class="testimonials-heading">Testimonials</h2>
         <div class="testimonials-grid">
           <blockquote class="testimonial-card">
             <p class="testimonial-quote">"The frameworks here aren't fluff—they're operating systems for how you show up. Game changer."</p>
@@ -71,21 +89,29 @@
         <h2 class="section-title">Stay in touch</h2>
         <p class="section-text">Join the list for updates and early access.</p>
         <form class="contact-form" action="#" method="post" id="contact-form">
-          <label for="email">Email</label>
+          <label for="email"><span class="visually-hidden">Email</span></label>
           <input type="email" id="email" name="email" required placeholder="you@example.com">
           <button type="submit" class="btn btn-primary">Join</button>
         </form>
       </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
-    <img src="assets/alpha-ravo-logo.png" alt="Alpha Ravo" class="footer-logo">
-    <p class="footer-tagline">Recode your mind. Realign your life.</p>
-    <p class="footer-social"><a href="https://www.instagram.com/alpharavo1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @alpharavo1">@alpharavo1</a></p>
+    <div class="footer-logo">
+      <span class="footer-wordmark">ALPHA RAVO</span>
+    </div>
+    <p class="footer-tagline">MASCULINE PROWESS</p>
+    <p class="footer-social">
+      <a href="https://www.instagram.com/alpharavo1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @alpharavo1">
+        <svg class="footer-ig-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+          <circle cx="12" cy="12" r="4.5"></circle>
+          <circle cx="17.2" cy="6.8" r="0.9"></circle>
+        </svg>
+        <span>@alpharavo1</span>
+      </a>
+    </p>
     <p class="footer-copy">&copy; Alpha Ravo. All rights reserved.</p>
-    <p class="footer-copy" style="margin-top:0.25rem;font-size:0.7rem;opacity:0.6">Live Feb 22, 2025</p>
   </footer>
 
   <script src="main.js"></script>
