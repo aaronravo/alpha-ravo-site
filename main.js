@@ -12,9 +12,10 @@
     });
   }
 
-  // Hero wordmark + tagline typing animation
+  // Hero wordmark + tagline typing animation (+ optional roar sound)
   var hero = document.querySelector('.hero-wordmark-primary');
   var tagline = document.querySelector('.hero-wordmark-tagline');
+  var roarAudio = document.getElementById('roar-audio');
 
   if (hero) {
     var heroFullText = hero.textContent.trim();
@@ -38,6 +39,32 @@
       var heroIndex = 0;
       var delayBeforeStart = 250;
       var charDelay = 85;
+
+      function playRoar() {
+        if (!roarAudio) return;
+        try {
+          roarAudio.currentTime = 0;
+          roarAudio.volume = 1;
+          roarAudio.playbackRate = 1.4;
+
+          var maybePromise = roarAudio.play();
+          if (maybePromise && typeof maybePromise.then === 'function') {
+            maybePromise.catch(function () {
+              // Autoplay might be blocked; ignore.
+            });
+          }
+
+          setTimeout(function () {
+            try {
+              roarAudio.pause();
+            } catch (e) {
+              // Ignore.
+            }
+          }, 1600);
+        } catch (e) {
+          // Ignore playback errors.
+        }
+      }
 
       function startTaglineTyping() {
         if (!tagline || !taglineFullText.length) return;
@@ -71,7 +98,10 @@
         }
       }
 
-      setTimeout(typeNext, delayBeforeStart);
+      setTimeout(function () {
+        playRoar();
+        typeNext();
+      }, delayBeforeStart);
     }
   }
 })();
