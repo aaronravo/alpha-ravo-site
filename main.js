@@ -40,7 +40,7 @@
       var delayBeforeStart = 250;
       var charDelay = 85;
 
-      function playRoar() {
+      function playRoar(fromUserInteraction) {
         if (!roarAudio) return;
         try {
           roarAudio.currentTime = 0;
@@ -50,7 +50,18 @@
           var maybePromise = roarAudio.play();
           if (maybePromise && typeof maybePromise.then === 'function') {
             maybePromise.catch(function () {
-              // Autoplay might be blocked; ignore.
+              // Autoplay might be blocked; on first failure,
+              // hook into the next user interaction to retry.
+              if (fromUserInteraction) return;
+
+              function onFirstUserInteraction() {
+                document.removeEventListener('pointerdown', onFirstUserInteraction);
+                document.removeEventListener('keydown', onFirstUserInteraction);
+                playRoar(true);
+              }
+
+              document.addEventListener('pointerdown', onFirstUserInteraction, { once: true });
+              document.addEventListener('keydown', onFirstUserInteraction, { once: true });
             });
           }
 
@@ -99,7 +110,7 @@
       }
 
       setTimeout(function () {
-        playRoar();
+        playRoar(false);
         typeNext();
       }, delayBeforeStart);
     }
