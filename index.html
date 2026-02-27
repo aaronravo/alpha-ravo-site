@@ -8,11 +8,11 @@
   <meta name="description" content="Alpha Ravo. Recode your mind. Realign your life.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
+  <meta http-equiv="Expires" content="0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Antonio:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link id="site-css" rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
@@ -60,11 +60,17 @@
         <p class="founder-name">Aaron Ravo</p>
         <p class="founder-title">Businessman and Human Performance Architect</p>
         <p class="founder-cred">Founder-CEO, AI technology company · Former President, three years deep in AI infrastructure and applied integration</p>
+        <p class="founder-text">Bio-hack – focused on longevity and debris removal.</p>
         <p class="founder-text">Aaron has built and scaled multiple ventures since an early age. Forged in discipline and built for competition like a Trojan, he approaches both business and biology with the mindset of a systems architect.</p>
         <p class="founder-text">A long-time biohacker focused on longevity and debris removal, he conducts ongoing controlled self-experimentation in recovery optimization, cellular repair, strength development, and cognitive performance. Aaron treats physiology and mindset like an operating system—re-coding directives and resetting trajectory by design.</p>
         <p class="founder-tagline">Aaron doesn’t talk theory. He builds systems.</p>
       </div>
     </section>
+
+      <section class="biohook section" aria-label="What we do">
+        <h2 class="section-title">What we do</h2>
+        <p class="section-text">Bio-hack – focused on longevity and debris removal.</p>
+      </section>
 
       <section class="book-coming section" aria-label="Book coming soon">
         <h2 class="section-title">Book coming soon</h2>
@@ -131,6 +137,48 @@
     aria-hidden="true">
   </audio>
 
-  <script src="main.js"></script>
+  <script>
+    (function () {
+      var VERSION_PARAM = 'v';
+
+      function applyVersion(version) {
+        var v = encodeURIComponent(version);
+
+        var css = document.getElementById('site-css');
+        if (css) {
+          css.href = 'styles.css?' + VERSION_PARAM + '=' + v;
+        }
+
+        var script = document.createElement('script');
+        script.src = 'main.js?' + VERSION_PARAM + '=' + v;
+        script.defer = true;
+        document.body.appendChild(script);
+      }
+
+      function fallbackVersion() {
+        return String(Date.now());
+      }
+
+      function loadWithVersion(version) {
+        applyVersion(version || fallbackVersion());
+      }
+
+      try {
+        fetch('/api/version')
+          .then(function (res) {
+            if (!res.ok) throw new Error('version fetch failed');
+            return res.json();
+          })
+          .then(function (data) {
+            loadWithVersion(data.version || data.commit || data.tag || fallbackVersion());
+          })
+          .catch(function () {
+            loadWithVersion(fallbackVersion());
+          });
+      } catch (e) {
+        loadWithVersion(fallbackVersion());
+      }
+    })();
+  </script>
 </body>
 </html>
