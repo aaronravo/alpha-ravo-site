@@ -171,6 +171,14 @@ a:hover {
   text-transform: uppercase;
 }
 
+.hero-gate-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .hero-logo-wrap {
   display: block;
   perspective: 1200px;
