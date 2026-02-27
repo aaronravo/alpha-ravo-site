@@ -160,7 +160,8 @@ a:hover {
 
 .hero-gate-logo {
   display: block;
-  max-width: min(92vw, 640px);
+  width: 100%;
+  max-width: 900px;
   height: auto;
 }
 
