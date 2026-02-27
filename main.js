@@ -12,107 +12,52 @@
     });
   }
 
-  // Hero wordmark + tagline typing animation (+ optional roar sound)
-  var hero = document.querySelector('.hero-wordmark-primary');
-  var tagline = document.querySelector('.hero-wordmark-tagline');
+  // Hero logo roll-in + tagline reveal (+ optional roar sound)
+  var heroWordmark = document.querySelector('.hero-wordmark');
+  var heroLogoWrap = document.querySelector('.hero-logo-wrap');
   var roarAudio = document.getElementById('roar-audio');
 
-  if (hero) {
-    var heroFullText = hero.textContent.trim();
-    var heroFixedWidth = hero.offsetWidth;
-    var taglineFullText = tagline && tagline.textContent ? tagline.textContent.trim() : '';
-    var taglineFixedWidth = tagline ? tagline.offsetWidth : 0;
+  function startHeroAnimation(shouldPlayRoar) {
+    if (!heroWordmark || !heroLogoWrap) return;
 
-    if (heroFullText.length > 0) {
-      if (heroFixedWidth > 0) {
-        hero.style.minWidth = heroFixedWidth + 'px';
-      }
+    function playRoar() {
+      if (!roarAudio || !shouldPlayRoar) return;
+      try {
+        roarAudio.currentTime = 0;
+        roarAudio.volume = 1;
+        roarAudio.playbackRate = 1.4;
+        roarAudio.play().catch(function () { /* autoplay blocked */ });
 
-      if (tagline && taglineFullText.length > 0 && taglineFixedWidth > 0) {
-        tagline.style.minWidth = taglineFixedWidth + 'px';
-        tagline.textContent = '';
-      }
-
-      hero.textContent = '';
-      hero.classList.add('is-typing');
-
-      var heroIndex = 0;
-      var delayBeforeStart = 250;
-      var charDelay = 85;
-
-      function playRoar(fromUserInteraction) {
-        if (!roarAudio) return;
-        try {
-          roarAudio.currentTime = 0;
-          roarAudio.volume = 1;
-          roarAudio.playbackRate = 1.4;
-
-          var maybePromise = roarAudio.play();
-          if (maybePromise && typeof maybePromise.then === 'function') {
-            maybePromise.catch(function () {
-              // Autoplay might be blocked; on first failure,
-              // hook into the next user interaction to retry.
-              if (fromUserInteraction) return;
-
-              function onFirstUserInteraction() {
-                document.removeEventListener('pointerdown', onFirstUserInteraction);
-                document.removeEventListener('keydown', onFirstUserInteraction);
-                playRoar(true);
-              }
-
-              document.addEventListener('pointerdown', onFirstUserInteraction, { once: true });
-              document.addEventListener('keydown', onFirstUserInteraction, { once: true });
-            });
+        setTimeout(function () {
+          try {
+            roarAudio.pause();
+          } catch (e) {
+            // Ignore.
           }
-
-          setTimeout(function () {
-            try {
-              roarAudio.pause();
-            } catch (e) {
-              // Ignore.
-            }
-          }, 1600);
-        } catch (e) {
-          // Ignore playback errors.
-        }
+        }, 1600);
+      } catch (e) {
+        // Ignore playback errors.
       }
-
-      function startTaglineTyping() {
-        if (!tagline || !taglineFullText.length) return;
-
-        var taglineIndex = 0;
-        var taglineCharDelay = 60;
-
-        tagline.classList.add('is-typing');
-
-        function typeTaglineNext() {
-          if (taglineIndex <= taglineFullText.length) {
-            tagline.textContent = taglineFullText.slice(0, taglineIndex);
-            taglineIndex += 1;
-            setTimeout(typeTaglineNext, taglineCharDelay);
-          } else {
-            tagline.classList.remove('is-typing');
-          }
-        }
-
-        typeTaglineNext();
-      }
-
-      function typeNext() {
-        if (heroIndex <= heroFullText.length) {
-          hero.textContent = heroFullText.slice(0, heroIndex);
-          heroIndex += 1;
-          setTimeout(typeNext, charDelay);
-        } else {
-          hero.classList.remove('is-typing');
-          startTaglineTyping();
-        }
-      }
-
-      setTimeout(function () {
-        playRoar(false);
-        typeNext();
-      }, delayBeforeStart);
     }
+
+    playRoar();
+    heroLogoWrap.classList.add('is-rolling-in');
+    setTimeout(function () {
+      heroWordmark.classList.add('is-revealed');
+    }, 400);
+  }
+
+  var heroGateBtn = document.getElementById('hero-gate-btn');
+
+  if (heroGateBtn) {
+    heroGateBtn.addEventListener('click', function () {
+      var gate = document.getElementById('hero-gate');
+      if (gate && gate.parentNode) {
+        gate.parentNode.removeChild(gate);
+      }
+      startHeroAnimation(true);
+    });
+  } else {
+    startHeroAnimation(true);
   }
 })();
