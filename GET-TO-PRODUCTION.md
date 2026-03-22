@@ -1,5 +1,7 @@
 # Get the site to production
 
+> **Reminder:** Pushing this repo does **not** update the live site. After you commit and push, run **`./sync-site.sh`** (from the repo root) so **alpha-ravo-site** gets the latest files and Vercel can deploy. Otherwise changes won’t appear on alpharavo.com or phones.
+
 Your local preview looks good. To go live at **alpharavo.com**:
 
 ---
@@ -20,6 +22,14 @@ cd "/Users/aaronravo/Documents/Cursor/Alpha Ravo"
 - Go to **https://vercel.com/dashboard** → your project.
 - **Settings → Git**: Connected repo should be **aaronravo/alpha-ravo-site**, **Root Directory** left **empty**.
 - **Deployments**: After a sync, a new deployment should appear and finish in 1–2 minutes. The **Production** URL (e.g. `https://alpha-ravo-xxx.vercel.app`) is your live site until the domain is connected.
+
+### Phone / mobile still shows the old site?
+
+1. **Deploy** — Phones load the **live** site. Run **`./sync-site.sh`** after your edits and wait until Vercel finishes the new deployment. Local preview on your Mac can be ahead of what mobile sees until you sync.
+2. **Hard refresh or private tab** — **Safari (iPhone):** open `alpharavo.com` in a **Private** tab, or clear history/cache for a clean load. **Chrome (Android):** try **Incognito** or clear **Cached images and files** for the site.
+3. **Check Vercel** — **Deployments** → production should show a **recent** time right after you sync.
+
+This repo’s **`website/vercel.json`** sets **Cache-Control** on `/` and `/index.html` so browsers and CDNs revalidate the HTML sooner after each deploy.
 
 ---
 

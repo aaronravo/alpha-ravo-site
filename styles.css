@@ -171,12 +171,53 @@ a:hover {
   text-transform: uppercase;
 }
 
-.hero-gate-subtitle {
+.hero-gate-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: center;
+  max-width: min(96vw, 50rem);
+  padding: 0 1rem;
+}
+
+/* Two-line hero headline: line 2 keeps “RE-CODED MEN” unbroken */
+.hero-headline-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.2em;
+}
+
+.hero-headline-stack .hero-headline-line1,
+.hero-headline-stack .hero-headline-line2 {
+  display: block;
+  line-height: 1.12;
+}
+
+.hero-headline-stack .hero-headline-line2 {
+  white-space: nowrap;
+}
+
+.hero-gate-headline {
   margin: 0;
-  font-size: 1.9rem;
-  letter-spacing: 0.18em;
+  font-size: clamp(1.35rem, 5.5vw, 2.65rem);
+  letter-spacing: 0.1em;
+  line-height: 1.18;
   text-transform: uppercase;
   color: var(--accent);
+  font-weight: 600;
+}
+
+.hero-gate-subheadline {
+  margin: 0;
+  font-size: clamp(0.95rem, 3.4vw, 1.65rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
 .hero-logo-wrap {
@@ -248,13 +289,31 @@ a:hover {
   margin-top: 0.35rem;
 }
 
-.hero-strap {
-  font-size: clamp(1.7rem, 3.4vw, 2.3rem);
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.hero-headlines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: min(96vw, 50rem);
   margin-top: 0.8rem;
+}
+
+.hero-strap {
+  font-size: clamp(1.35rem, 5.5vw, 2.65rem);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  line-height: 1.12;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.hero-strap-sub {
+  font-size: clamp(0.95rem, 3.4vw, 1.65rem);
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .hero-headline {
@@ -525,12 +584,26 @@ a:hover {
   text-align: center;
 }
 
+/* Tight centered column: gold lines sized to text so centering isn’t skewed by letter-spacing */
+.biohook.section .biohook-warroom,
+.biohook.section .biohook-warroom-sub,
+.biohook.section .biohook-access,
+.biohook.section .biohook-label {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 .biohook .section-title {
   font-size: clamp(1.8rem, 3.2vw, 2.2rem);
 }
 
-.biohook-warroom {
-  margin: 0.5rem 0 0.75rem;
+.biohook-warroom,
+.biohook-access {
   font-size: clamp(1.4rem, 3vw, 1.9rem);
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -538,12 +611,36 @@ a:hover {
   color: var(--accent);
 }
 
+.biohook-warroom {
+  margin: 0.5rem 0 0.2rem;
+}
+
+.biohook-warroom-sub {
+  margin: 0 0 0.85rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.biohook-access {
+  margin: 2rem 0 0.35rem;
+  /* Letter-spacing adds space after each glyph; nudge so “ACCESS” reads visually centered */
+  transform: translateX(-0.07em);
+}
+
 .biohook .section-text {
   font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 36ch;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .biohook-label {
-  margin: 0.75rem 0 0.15rem;
+  margin: 0.5rem 0 0.15rem;
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -552,9 +649,12 @@ a:hover {
 }
 
 .biohook-detail {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 42ch;
   font-size: 1.05rem;
   color: var(--text-muted);
+  text-align: center;
+  text-wrap: balance;
 }
 
 .book-coming.section {
