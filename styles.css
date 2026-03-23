@@ -473,16 +473,6 @@ a:hover {
   align-items: center;
 }
 
-.founder-tagline-top {
-  margin: 0 0 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  text-align: center;
-}
-
 .founder-img {
   width: 100%;
   max-width: 420px;
@@ -584,6 +574,30 @@ a:hover {
   text-align: center;
 }
 
+.biohook-layout {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.biohook-photo-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.biohook-photo {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.92),
+    0 0 0 1px rgba(0, 0, 0, 0.75);
+}
+
+.biohook-copy {
+  width: 100%;
+}
+
 /* Tight centered column: gold lines sized to text so centering isn’t skewed by letter-spacing */
 .biohook.section .biohook-warroom,
 .biohook.section .biohook-warroom-sub,
@@ -624,6 +638,15 @@ a:hover {
   color: var(--accent);
 }
 
+.biohook-masculine {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--text-muted);
+}
+
 .biohook-access {
   margin: 2rem 0 0.35rem;
   /* Letter-spacing adds space after each glyph; nudge so “ACCESS” reads visually centered */
@@ -632,11 +655,20 @@ a:hover {
 
 .biohook .section-text {
   font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
   margin-left: auto;
   margin-right: auto;
   max-width: 36ch;
   text-align: center;
   text-wrap: balance;
+}
+
+.biohook-masculine + .section-text,
+.biohook .section-text + .section-text {
+  margin-top: 0;
+  margin-bottom: 0.85rem;
 }
 
 .biohook-label {
@@ -648,6 +680,10 @@ a:hover {
   color: var(--accent);
 }
 
+.biohook-label-note {
+  margin-left: 0.5rem;
+}
+
 .biohook-detail {
   margin: 0 auto;
   max-width: 42ch;
@@ -655,6 +691,72 @@ a:hover {
   color: var(--text-muted);
   text-align: center;
   text-wrap: balance;
+}
+
+.biohook-dm-link {
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.biohook-dm-link:hover {
+  color: var(--text);
+}
+
+@media (min-width: 900px) {
+  .biohook.section {
+    max-width: 1020px;
+  }
+
+  .biohook-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+    gap: 2.25rem;
+    align-items: start;
+  }
+
+  .biohook-photo {
+    max-width: 360px;
+  }
+
+  .biohook-photo-wrap {
+    justify-content: flex-start;
+  }
+
+  .biohook-copy {
+    text-align: left;
+  }
+
+  .biohook.section .biohook-warroom,
+  .biohook.section .biohook-warroom-sub,
+  .biohook.section .biohook-masculine,
+  .biohook.section .biohook-access,
+  .biohook.section .biohook-label {
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .biohook-access {
+    transform: none;
+  }
+
+  .biohook .section-text {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 32ch;
+    text-align: left;
+    text-wrap: pretty;
+  }
+
+  .biohook-detail {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 36ch;
+    text-align: left;
+  }
 }
 
 .book-coming.section {
