@@ -523,12 +523,36 @@ a:hover {
   }
 }
 
-.founder-bio-heading {
-  font-size: 0.85rem;
+.founder-section-kicker {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin: 0 0 0.75rem;
+  color: var(--text-muted);
+}
+
+.founder-bio-heading {
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  margin: 0 0 0.85rem;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.founder-role {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.founder-lede {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
   color: var(--text-muted);
 }
 
@@ -542,7 +566,20 @@ a:hover {
 .founder-title {
   font-size: 0.95rem;
   color: var(--accent);
-  margin: 0 0 0.2rem;
+  margin: 0 0 1.15rem;
+}
+
+.founder-pillar-label {
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.founder-text + .founder-pillar-label {
+  margin-top: 1.15rem;
 }
 
 .founder-cred {
@@ -759,11 +796,76 @@ a:hover {
   }
 }
 
-.book-coming.section {
-  max-width: 640px;
+/* Mission statement */
+.mission.section {
+  max-width: 720px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 3.25rem;
+  padding: 2.5rem 1.5rem 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.mission-heading {
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--accent);
+  margin: 0 0 1.25rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.mission-text {
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0 0 1.15rem;
   text-align: left;
+}
+
+.mission-emphasis {
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  line-height: 1.65;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 1rem;
+  text-align: left;
+}
+
+.mission-list {
+  margin: 0 0 1.25rem;
+  padding-left: 1.35rem;
+  color: var(--text-muted);
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.mission-list li {
+  margin-bottom: 0.35rem;
+}
+
+.mission-list strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.mission-closing {
+  font-size: clamp(0.95rem, 1.9vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--accent);
+  margin: 1.25rem 0 0;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.mission-closing strong {
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .mission.section {
+    padding: 3rem 2rem 3.5rem;
+  }
 }
 
 .book-coming .section-title {
