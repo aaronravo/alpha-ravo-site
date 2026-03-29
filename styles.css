@@ -868,6 +868,75 @@ a:hover {
   }
 }
 
+/* Support the movement */
+.support.section {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2.75rem 1.5rem 3rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.support-heading {
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--accent);
+  line-height: 1.25;
+}
+
+.support-lead {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.85rem;
+  line-height: 1.45;
+}
+
+.support-text {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.support-cta {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.support-actions {
+  margin: 0 0 1rem;
+}
+
+.support-donate-btn {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.support-notes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.support-notes li + li {
+  margin-top: 0.4rem;
+}
+
+@media (min-width: 640px) {
+  .support.section {
+    padding: 3rem 2rem 3.5rem;
+  }
+}
+
 .book-coming .section-title {
   color: var(--accent);
   text-align: center;
