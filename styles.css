@@ -220,6 +220,15 @@ a:hover {
   font-weight: 600;
 }
 
+.hero-sub-prose {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  max-width: min(44rem, 94vw);
+  font-size: clamp(1.15rem, 3.6vw, 1.6rem);
+  font-weight: 500;
+}
+
 .hero-micro-pillars {
   display: block;
   margin: 0;
@@ -244,7 +253,7 @@ a:hover {
   text-align: center;
 }
 
-/* Extra air after “One man at a time” and between pillars + join line */
+/* Extra air after hero sub-prose line and between pillars + join line */
 .hero-gate-subheadline + .hero-micro-pillars,
 .hero-strap-sub + .hero-micro-pillars {
   margin-top: 1.55rem;
@@ -348,6 +357,20 @@ a:hover {
   color: var(--text-muted);
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+/* After .hero-strap-sub so prose line isn’t forced to all-caps */
+.hero-strap-sub.hero-sub-prose {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  max-width: min(44rem, 94vw);
+  font-size: clamp(1.15rem, 3.6vw, 1.6rem);
+  font-weight: 500;
 }
 
 .hero-headlines .hero-micro-pillars,
@@ -703,6 +726,7 @@ a:hover {
 .biohook.section .biohook-warroom-soft,
 .biohook.section .biohook-rally,
 .biohook.section .biohook-access,
+.biohook.section .biohook-access-tagline,
 .biohook.section .biohook-label {
   display: block;
   width: fit-content;
@@ -781,6 +805,16 @@ a:hover {
   margin: 2rem 0 0.35rem;
   /* Letter-spacing adds space after each glyph; nudge so “ACCESS” reads visually centered */
   transform: translateX(-0.07em);
+}
+
+.biohook-access-tagline {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--text-muted);
+  line-height: 1.35;
 }
 
 .biohook .section-text {
@@ -869,6 +903,7 @@ a:hover {
   .biohook.section .biohook-rally,
   .biohook.section .biohook-masculine,
   .biohook.section .biohook-access,
+  .biohook.section .biohook-access-tagline,
   .biohook.section .biohook-label {
     width: auto;
     margin-left: 0;
