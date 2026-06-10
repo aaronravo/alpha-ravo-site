@@ -64,6 +64,11 @@ a:hover {
   width: auto;
 }
 
+.logo-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 .logo-wordmark {
   font-family: var(--display-font);
   font-size: clamp(1.1rem, 2.2vw, 1.4rem);
@@ -154,8 +159,20 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding: 1.5rem 0;
+  overflow-y: auto;
   background: radial-gradient(circle at top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95));
   z-index: 2;
+}
+
+.hero-gate-logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+  width: min(96vw, 900px);
+  max-width: 100%;
 }
 
 .hero-gate-logo {
@@ -163,6 +180,18 @@ a:hover {
   width: 100%;
   max-width: 900px;
   height: auto;
+  flex-shrink: 0;
+}
+
+.hero-logo-tagline {
+  display: block;
+  margin: 0;
+  font-size: clamp(1.15rem, 3.6vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1.3;
 }
 
 .hero-gate-btn {
@@ -243,37 +272,48 @@ a:hover {
 
 .hero-micro-join {
   display: block;
-  margin: 0;
-  max-width: min(38rem, 96vw);
-  font-size: clamp(1rem, 2.9vw, 1.28rem);
+  margin: 0 auto;
+  max-width: none;
+  width: fit-content;
+  white-space: nowrap;
+  font-size: clamp(0.68rem, 2.15vw, 1.28rem);
   font-weight: 500;
   line-height: 1.58;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   color: var(--text-muted);
   text-align: center;
 }
 
-/* Extra air after hero sub-prose line and between pillars + join line */
-.hero-gate-subheadline + .hero-micro-pillars,
-.hero-strap-sub + .hero-micro-pillars {
-  margin-top: 1.55rem;
-}
-
-.hero-micro-pillars + .hero-micro-join {
-  margin-top: 0.65rem;
+.hero-gate-headline + .hero-micro-join,
+.hero-strap + .hero-micro-join {
+  margin-top: 0.35rem;
 }
 
 .hero-logo-wrap {
   display: block;
+  flex-shrink: 0;
+  width: min(96vw, 900px);
+  max-width: 100%;
   perspective: 1200px;
   margin-bottom: 0.5rem;
 }
 
+.hero-logo-wrap .hero-logo-tagline {
+  opacity: 0;
+  transition: opacity 0.5s ease-out 0.45s;
+}
+
+.hero-logo-wrap.is-rolling-in .hero-logo-tagline {
+  opacity: 1;
+}
+
 .hero-logo-img {
   display: block;
+  width: 100%;
   max-width: min(96vw, 900px);
   height: auto;
   margin: 0 auto;
+  flex-shrink: 0;
   opacity: 0;
   transform: rotateY(-90deg);
   transform-origin: center center;
@@ -534,6 +574,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .founder-img {
@@ -563,26 +604,34 @@ a:hover {
   max-width: 560px;
   margin: 0 auto;
   text-align: left;
-  padding: 2.25rem 0 0;
+  padding: 3rem 0 0;
   border-top: 1px solid var(--border);
 }
 
-@media (min-width: 880px) {
+@media (min-width: 768px) {
   .founder-photo.section {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+    gap: 2.5rem;
+  }
+
+  .founder-photo-wrap {
+    align-items: flex-start;
   }
 
   .founder-img {
-    max-width: 380px;
+    max-width: 340px;
     margin: 0;
   }
 
   .founder-bio {
-    margin: 0 0 0 3rem;
-    padding-top: 0.5rem;
+    margin: 0;
+    padding-top: 4.25rem;
     border-top: none;
+    flex: 1;
+    max-width: 480px;
+    align-self: flex-start;
   }
 }
 
@@ -614,12 +663,22 @@ a:hover {
 
 .founder-bio-heading {
   font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: none;
   margin: 0 0 0.85rem;
   color: var(--text);
-  line-height: 1.25;
+  line-height: 1.35;
+}
+
+.founder-bio-name {
+  font-weight: 400;
+  color: var(--text);
+}
+
+.founder-bio-desc {
+  font-weight: 400;
+  color: var(--text-muted);
 }
 
 .founder-role {
@@ -724,6 +783,7 @@ a:hover {
 .biohook.section .biohook-warroom-sub,
 .biohook.section .biohook-warroom-cta,
 .biohook.section .biohook-warroom-soft,
+.biohook.section .biohook-warroom-tagline,
 .biohook.section .biohook-rally,
 .biohook.section .biohook-access,
 .biohook.section .biohook-access-tagline,
@@ -792,6 +852,16 @@ a:hover {
   line-height: 1.4;
 }
 
+.biohook-warroom-tagline {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--accent);
+  line-height: 1.45;
+}
+
 .biohook-masculine {
   margin: 0 0 0.85rem;
   font-size: clamp(1.1rem, 2.4vw, 1.4rem);
@@ -810,7 +880,7 @@ a:hover {
 .biohook-access-tagline {
   margin: 0 0 0.75rem;
   font-size: clamp(1rem, 2.5vw, 1.35rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: none;
   color: var(--text-muted);
@@ -818,13 +888,13 @@ a:hover {
 }
 
 .biohook .section-text {
-  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  font-size: clamp(0.88rem, 1.85vw, 1rem);
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--text-muted);
   margin-left: auto;
   margin-right: auto;
-  max-width: 44ch;
+  max-width: 48ch;
   text-align: center;
   text-wrap: balance;
 }
@@ -900,6 +970,7 @@ a:hover {
   .biohook.section .biohook-warroom-sub,
   .biohook.section .biohook-warroom-cta,
   .biohook.section .biohook-warroom-soft,
+  .biohook.section .biohook-warroom-tagline,
   .biohook.section .biohook-rally,
   .biohook.section .biohook-masculine,
   .biohook.section .biohook-access,
@@ -1135,11 +1206,20 @@ a:hover {
 }
 
 .book-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.2em;
   font-family: var(--display-font);
   font-size: 1.15rem;
   line-height: 1.3;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+}
+
+.book-title-line {
+  display: block;
 }
 
 .book-brand {
