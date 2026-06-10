@@ -9,6 +9,9 @@
   --border: rgba(232, 227, 215, 0.12);
   --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --display-font: 'Antonio', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --content-layout-max: 1020px;
+  --photo-column-max: 340px;
+  --content-grid-cols: minmax(0, 0.9fr) minmax(0, 1.25fr);
 }
 
 *,
@@ -579,7 +582,7 @@ a:hover {
 
 .founder-img {
   width: 100%;
-  max-width: 420px;
+  max-width: var(--photo-column-max);
   margin: 0 auto;
   display: block;
   border-radius: 8px;
@@ -608,29 +611,39 @@ a:hover {
   border-top: 1px solid var(--border);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .founder-photo.section {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2.5rem;
+    display: grid;
+    grid-template-columns: var(--content-grid-cols);
+    gap: 2.25rem;
+    align-items: start;
+    max-width: var(--content-layout-max);
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
   }
 
   .founder-photo-wrap {
     align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: var(--photo-column-max);
   }
 
   .founder-img {
-    max-width: 340px;
+    max-width: var(--photo-column-max);
     margin: 0;
+    transform: none;
+  }
+
+  .founder-img:hover {
+    transform: translateY(-6px);
   }
 
   .founder-bio {
     margin: 0;
     padding-top: 4.25rem;
     border-top: none;
-    flex: 1;
-    max-width: 480px;
+    max-width: none;
     align-self: flex-start;
   }
 }
@@ -750,24 +763,44 @@ a:hover {
 .biohook.section {
   max-width: 640px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 2rem;
+  padding: 1.5rem 1.5rem 2rem;
   text-align: center;
 }
 
 .biohook-layout {
   display: grid;
   gap: 1.5rem;
+  align-items: start;
+}
+
+.biohook-photo-column {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 1.5rem;
 }
 
 .biohook-photo-wrap {
   display: flex;
   justify-content: center;
+  width: 100%;
+}
+
+.biohook-photo-wrap-access {
+  margin-top: 0;
+}
+
+.biohook-access-copy {
+  padding-top: 0.15rem;
+}
+
+.biohook-access-copy .biohook-access {
+  margin-top: 0;
 }
 
 .biohook-photo {
   width: 100%;
-  max-width: 300px;
+  max-width: var(--photo-column-max);
   border-radius: 8px;
   box-shadow:
     0 24px 55px rgba(0, 0, 0, 0.92),
@@ -949,13 +982,37 @@ a:hover {
   }
 
   .biohook-layout {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+    grid-template-columns: var(--content-grid-cols);
+    grid-template-rows: auto auto;
     gap: 2.25rem;
+    row-gap: 2rem;
     align-items: start;
   }
 
-  .biohook-photo {
-    max-width: 360px;
+  .biohook-photo-column {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-items: flex-start;
+    max-width: var(--photo-column-max);
+    gap: 1.75rem;
+  }
+
+  .biohook-warroom-copy {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+  }
+
+  .biohook-access-copy {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .biohook-photo,
+  .biohook-photo-access {
+    max-width: var(--photo-column-max);
   }
 
   .biohook-photo-wrap {
@@ -1356,11 +1413,11 @@ a:hover {
 }
 
 .footer-tagline {
-  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--accent);
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;
   margin: 0 0 0.5rem;
   padding-bottom: 1.5rem;
 }
